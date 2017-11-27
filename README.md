@@ -1,18 +1,35 @@
-# jQuery-JSONP
+# Pretty-JSONP
 
-jQuery-JSONP is a compact (1.8kB minified), yet feature-packed, alternative solution to jQuery's implementation of JSONP.
+This is fork of [jquery-jsonp](https://github.com/jaubourg/jquery-jsonp), but jquery independent.
+It`s a compact (1.8kB minified), yet feature-packed solution to implementation of JSONP.
 
 ## Licensing
 
-jQuery-JSONP is released under the [MIT license](https://github.com/jaubourg/jquery-jsonp/blob/master/MIT-LICENSE.txt).
+Pretty-JSONP is released under the [MIT license](https://github.com/strayiker/pretty-jsonp/blob/master/MIT-LICENSE.txt).
 
-## Download
+## Install
 
-You can download jQuery-JSONP [here](https://github.com/jaubourg/jquery-jsonp/downloads) (full text and minified versions available).
+npm install --save pretty-jsonp
+
+Note, this implementation uses Object.assign so if u wanna support old browsers u should add a ponyfill like [object-assign](https://github.com/sindresorhus/object-assign).
+
+## Usage
+
+```
+import jsonp from 'pretty-jsonp';
+
+jsonp({
+  url: 'http://some.cool.domain/api/method',
+  data: { param: 'purum' },
+  success: () => {},
+  error: () => {},
+  complete: () => {}
+});
+```
 
 ## Features
 
-jQuery-JSONP features:
+features:
 * *error recovery* in case of network failure or ill-formed JSON responses,
 * precise *control over callback naming* and how it is transmitted in the URL,
 * multiple requests with the *same callback name running concurrently*,
@@ -20,22 +37,16 @@ jQuery-JSONP features:
 * the possibility to *manually abort* the request just like any other AJAX request,
 * a *timeout* mechanism.
 
-jQuery-JSONP publishes a $.ajax()-like function called $.jsonp(): similarity ensures programmers get up-to-speed easily.
-
-For instance, as of version 2.3.0, $.jsonp() returns a promise when used in conjunction with jQuery 1.5+.
-
 ## Compatibility
 
-jQuery-JSONP has been tested and runs within all major browsers, namely:
+Original library has been tested and runs within all major browsers, namely:
 * *Internet Explorer 6+*
 * *Firefox 2+*
 * *Chrome 1+*
 * *Safari 3+*
 * *Opera 9+*
 
-jQuery-JSONP has also been tested with jQuery 1.3.x up to 1.7.x
-
 ## Documentation
 
-* [API Documentation](https://github.com/jaubourg/jquery-jsonp/blob/master/doc/API.md)
-* [Tips & Tricks](https://github.com/jaubourg/jquery-jsonp/blob/master/doc/TipsAndTricks.md)
+* [API Documentation](https://github.com/strayiker/pretty-jsonp/blob/master/doc/API.md)
+* [Tips & Tricks](https://github.com/strayiker/pretty-jsonp/blob/master/doc/TipsAndTricks.md)

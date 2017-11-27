@@ -1,16 +1,14 @@
 # API
 
-## `jQuery.jsonp( options )`
+## `jsonp( options )`
 
 ### Overview
 
 Loads a remote JSON object using a JSONP request.
 
-`$.jsonp()` returns the extended options (the `xOptions` object) for the query (that is an object containing all the options passed to the function plus defaults for those not provided). In most cases you won't need `xOptions` to manipulate directly, but it is available if you need to abort the request manually (`xOptions` provides an `abort()` method to that end).
+`jsonp()` returns the extended options (the `xOptions` object) for the query (that is an object containing all the options passed to the function plus defaults for those not provided). In most cases you won't need `xOptions` to manipulate directly, but it is available if you need to abort the request manually (`xOptions` provides an `abort()` method to that end).
 
-*_As of version 2.3.0, if you use jQuery-JSONP with jQuery 1.5+, the `xOptions` object is a Promise. See [jQuery's documentation](http://api.jquery.com/deferred.promise/) for more information on Promises and Deferreds._* 
-
-`$.jsonp()` takes one argument, an object of key/value pairs, that are used to initialize and handle the request. All options are optional. A default can be set for any option with `$.jsonp.setup()`. See below for a full list of the key/values that can be used.
+`jsonp()` takes one argument, an object of key/value pairs, that are used to initialize and handle the request. All options are optional. See below for a full list of the key/values that can be used.
 
 ### Options
 
@@ -28,9 +26,9 @@ function (xOptions) {
 
 If set to `false` it will force the data that you request not to be cached by the browser, unless the `pageCache` option is set to true.
 
-#### callback - `string` (`"_jqjsp"`)
+#### callback - `string` (`"_jsonp"`)
 
-Name of the JSONP callback as provided in the request url. Most of the time, you won't have to change this value but some JSONP providers have a predefined callback name that cannot be overidden. Set the name of said callback in the `callback` option and `$.jsonp` will catch the call.
+Name of the JSONP callback as provided in the request url. Most of the time, you won't have to change this value but some JSONP providers have a predefined callback name that cannot be overidden. Set the name of said callback in the `callback` option and `jsonp` will catch the call.
 
 *_As of version 2.0, the library defines a function for the callback in the global scope, so it is no longer safe to use the name of a function already defined: said function will be redefined by jQuery-JSONP._*
 
@@ -45,7 +43,7 @@ If provided, specifies the name of the url parameter that conveys the callback n
 Example:
 
 ```js
-$.jsonp({
+jsonp({
   url: "http://service.org/path?param1=xx&param2=xx",
   callbackParameter: "callback"
 });
@@ -54,7 +52,7 @@ $.jsonp({
 is strictly equivalent to:
 
 ```js
-$.jsonp({
+jsonp({
   url: "http://service.org/path?param1=xx&param2=xx&callback=?"
 });
 ```
@@ -82,7 +80,7 @@ function (xOptions, textStatus) {
 This object will be made the context of all `xOptions`-related callbacks. For example specifying a DOM element as the context will make it the context for the complete callback of a request, like so:
 
 ```js
-$.jsonp({
+jsonp({
   url: "test.php?callback=?",
   context: document.body,
   complete: function() {
@@ -135,7 +133,7 @@ function (json, textStatus, xOptions) {
 
 #### timeout - `number` (`0`)
 
-If greater than `0`, sets a local timeout (in milliseconds) for the request. This will override the global timeout, if one is set via `$.jsonp.setup`. For example, you could use this property to give a single request a longer timeout than all other requests that you've set to time out in one second.
+If greater than `0`, sets a local timeout (in milliseconds) for the request. For example, you could use this property to give a single request a longer timeout than all other requests that you've set to time out in one second.
 
 #### traditional - `boolean` (`false`)
 
@@ -155,4 +153,4 @@ Setup global settings for JSONP requests.
 
 ### Options
 
-See $.jsonp for a description of all available options.
+See jsonp for a description of all available options.
