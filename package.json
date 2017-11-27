@@ -1,0 +1,9 @@
+{
+  "name": "pretty-jsonp",
+  "version": "3.0.0",
+  "description": "JSONP implementation",
+  "main": "src/index.js",
+  "repository": "https://github.com/strayiker/pretty-jsonp.git",
+  "author": "Kirill Mesnyankin <sadbox.games@gmail.com>",
+  "license": "MIT"
+}
